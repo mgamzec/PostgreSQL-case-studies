@@ -1,4 +1,10 @@
--- Basic CASE statements
+/*
+Basic CASE statements
+What is your favorite team?
+The European Soccer Database contains data about 12,800 matches from 11 countries played between 2011-2015! Throughout this course, you will be shown filtered versions of the tables in this database in order to better explore their contents.
+In this exercise, you will identify matches played between FC Schalke 04 and FC Bayern Munich. There are 2 teams identified in each match in the hometeam_id and awayteam_id columns, available to you in the filtered matches_germany table. ID can join to the team_api_id column in the teams_germany table, but you cannot perform a join on both at the same time.
+However, you can perform this operation using a CASE statement once you've identified the team_api_id associated with each team!
+*/
 
 -- (1)
 SELECT
