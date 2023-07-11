@@ -19,6 +19,9 @@ FROM cities AS c1
 -- Order by descending country code
 ORDER BY code DESC;
 
+-- Perform an inner join with cities AS c1 on the left and countries as c2 on the right.
+-- Use code as the field to merge your tables on.
+
 SELECT c1.name AS city, code, c2.name AS country,
        region, city_proper_pop
 FROM cities AS c1
@@ -27,6 +30,21 @@ FROM cities AS c1
     -- 2. Match on country code
     ON c1.country_code = c2.code
 -- 3. Order by descending country code
+ORDER BY code DESC;
+
+-- Change the code to perform a LEFT JOIN instead of an INNER JOIN.
+-- After executing this query, have a look at how many records the query result contains.
+
+SELECT 
+    c1.name AS city, 
+    code, 
+    c2.name AS country,
+    region, 
+    city_proper_pop
+FROM cities AS c1
+-- Join right table (with alias)
+LEFT JOIN countries AS c2
+ON c1.country_code = c2.code
 ORDER BY code DESC;
 
 -----
@@ -73,6 +91,9 @@ ORDER BY c.name DESC;
 /*
 Left join (3)
 You'll now revisit the use of the AVG() function introduced in our Intro to SQL for Data Science course. You will use it in combination with left join to determine the average gross domestic product (GDP) per capita by region in 2010.
+Instructions:
+Complete the LEFT JOIN with the countries table on the left and the economies table on the right on the code field.
+Filter the records from the year 2010.
 */
 
 -- 5. Select name, region, and gdp_percapita
@@ -86,6 +107,9 @@ FROM countries AS c
 -- 4. Focus on 2010
 WHERE year = 2010;
 
+/* Instructions: To calculate per capita GDP per region, begin by grouping by region.
+                 After your GROUP BY, choose region in your SELECT statement, followed by average GDP per capita using the AVG() function, 
+                 with AS avg_gdp as your alias. */
 -- Select fields
 SELECT region, AVG(gdp_percapita) AS avg_gdp
 -- From countries (alias as c)
@@ -99,20 +123,21 @@ WHERE year = 2010
 -- Group by region
 GROUP BY region;
 
--- Select fields
+/* 
+   Instructions: Order the result set by the average GDP per capita from highest to lowest.
+                 Return only the first 10 records in your result. 
+*/
+
 SELECT region, AVG(gdp_percapita) AS avg_gdp
--- From countries (alias as c)
-FROM countries as c
-  -- Left join with economies (alias as e)
-  LEFT JOIN economies AS e
-    -- Match on code fields
-    ON c.code = e.code
--- Focus on 2010
+FROM countries AS c
+LEFT JOIN economies AS e
+USING(code)
 WHERE year = 2010
--- Group by region
 GROUP BY region
 -- Order by descending avg_gdp
-ORDER BY avg_gdp DESC;
+ORDER BY avg_gdp DESC
+-- Return only first 10 records
+LIMIT 10;
 
 -----
 
@@ -261,14 +286,27 @@ This exercise looks to explore languages potentially and most frequently spoken 
 You will begin with a cross join with cities AS c on the left and languages AS l on the right. Then you will modify the query using an inner join in the next tab.
 */
 
--- 4. Select fields
-SELECT c.name AS city, l.name AS language
--- 1. From cities (alias as c)
-FROM cities AS c        
-  -- 2. Join to languages (alias as l)
-  CROSS JOIN languages AS l
--- 3. Where c.name like Hyderabad
-WHERE c.name LIKE 'Hyder%';
+
+-- Complete the code to perform an INNER JOIN of countries AS c with languages AS l using the code field to obtain the languages currently spoken in the two countries.
+
+SELECT c.name AS country, l.name AS language
+-- Inner join countries as c with languages as l on code
+FROM countries AS c        
+INNER JOIN languages AS l
+USING(code)
+WHERE c.code IN ('PAK','IND')
+	AND l.code in ('PAK','IND');
+
+
+-- Change your INNER JOIN to a different kind of join to look at possible combinations of languages that could have been spoken in the two countries given their history.
+-- Observe the differences in output for both joins.
+
+SELECT c.name AS country, l.name AS language
+FROM countries AS c        
+-- Perform a cross join to languages (alias as l)
+CROSS JOIN languages AS l
+WHERE c.code in ('PAK','IND')
+	AND l.code in ('PAK','IND');
 
 -- 4. Select fields
 SELECT c.name AS city, l.name AS language
@@ -287,14 +325,26 @@ WHERE c.name LIKE 'Hyder%';
 Outer challenge
 Now that you're fully equipped to use outer joins, try a challenge problem to test your knowledge!
 In terms of life expectancy for 2010, determine the names of the lowest five countries and their regions.
+Instructions: 
+- Complete the join of countries AS c with populations as p.
+- Filter on the year 2010.
+- Sort your results by life expectancy in ascending order.
+- Limit the result to five countries.
 */
 
-SELECT c.name as country, region, p.life_expectancy as life_exp
-FROM countries as c
-LEFT JOIN populations as p
+SELECT 
+    c.name AS country,
+    region,
+    life_expectancy AS life_exp
+FROM countries AS c
+-- Join to populations (alias as p) using an appropriate join
+LEFT JOIN populations AS p
 ON c.code = p.country_code
-WHERE p.year = 2010
+-- Filter for only results in the year 2010
+WHERE year = 2010
+-- Order by life_exp
 ORDER BY life_exp
+-- Limit to five records
 LIMIT 5;
 
 -----
