@@ -347,4 +347,6 @@ ORDER BY life_exp
 -- Limit to five records
 LIMIT 5;
 
+-- Notice that more than one type of join can be used to return the five records in our result? All four types of joins we have learned will return the same result.
+
 -----
