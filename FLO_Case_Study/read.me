@@ -1,23 +1,24 @@
 FLO CASE STUDY
--- Veri seti Flo’dan son alışverişlerini 2020 - 2021 yıllarında OmniChannel (hem online hem offline alışveriş yapan) olarak yapan müşterilerin geçmiş alışveriş davranışlarından elde edilen bilgilerden oluşmaktadır.
 
---> 13 Değişken 19.945 Gözlem 2.7MB --> master_id Eşsiz müşteri numarası --> order_channel Alışveriş yapılan platforma ait hangi kanalın kullanıldığı (Android, ios, Desktop, Mobile) --> last_order_channel En son alışverişin yapıldığı kanal --> first_order_date Müşterinin yaptığı ilk alışveriş tarihi --> last_order_date Müşterinin yaptığı son alışveriş tarihi --> last_order_date_online Müşterinin online platformda yaptığı son alışveriş tarihi --> last_order_date_offline Müşterinin offline platformda yaptığı son alışveriş tarihi --> order_num_total_ever_online Müşterinin online platformda yaptığı toplam alışveriş sayısı --> order_num_total_ever_offline Müşterinin offline'da yaptığı toplam alışveriş sayısı --> customer_value_total_ever_offline Müşterinin offline alışverişlerinde ödediği toplam ücret --> customer_value_total_ever_online Müşterinin online alışverişlerinde ödediği toplam ücret --> interested_in_categories_12 Müşterinin son 12 ayda alışveriş yaptığı kategorilerin listesi --> store_type 3 farklı companyi ifade eder. A company'sinden alışveriş yapan kişi B'dende yaptı ise A,B şeklinde yazılmıştır.
+-- The dataset consists of the information obtained from the past shopping behaviors of customers who made their last purchases from Flo as OmniChannel (both online and offline shopper) in the years 2020-2021.
 
-SORULAR
+--> 13 Variable 19.945 Observation 2.7MB --> master_id Unique customer number --> order_channel Which channel of the shopping platform is used (Android, ios, Desktop, Mobile) --> last_order_channel The channel where the last purchase was made --> first_order_date date of the first purchase made by the customer --> last_order_date date of the last purchase made by the customer --> last_order_date_online The date of the last purchase made by the customer on the online platform --> last_order_date_offline The date of the last purchase made by the customer on the offline platform --> order_num_total_ever_online Total number of purchases made by the customer on the online platform --> order_num_total_ever_offline Total number of purchases made by the customer offline --> customer_value_total_ever_offline Total price paid by the customer for offline purchases --> customer_value_total_ever_online Total price paid by the customer for their online purchases --> interested_in_categories_12 List of categories that the customer has shopped in the last 12 months --> store_type refers to 3 different companies. If the person who shopped from company A made it from company B, it was written as A, B.
 
-Customers isimli bir veritabanı ve verilen veri setindeki değişkenleri içerecek FLO isimli bir tablo oluşturunuz.
-Kaç farklı müşterinin alışveriş yaptığını gösterecek sorguyu yazınız.
-Toplam yapılan alışveriş sayısı ve ciroyu getirecek sorguyu yazınız.
-Alışveriş başına ortalama ciroyu getirecek sorguyu yazınız.
-En son alışveriş yapılan kanal (last_order_channel) üzerinden yapılan alışverişlerin toplam ciro ve alışveriş sayılarını getirecek sorguyu yazınız.
-Store type kırılımında elde edilen toplam ciroyu getiren sorguyu yazınız.
-Yıl kırılımında alışveriş sayılarını getirecek sorguyu yazınız (Yıl olarak müşterinin ilk alışveriş tarihi (first_order_date) yılını baz alınız)
-En son alışveriş yapılan kanal kırılımında alışveriş başına ortalama ciroyu hesaplayacak sorguyu yazınız.
-Son 12 ayda en çok ilgi gören kategoriyi getiren sorguyu yazınız.
-En çok tercih edilen store_type bilgisini getiren sorguyu yazınız.
-En son alışveriş yapılan kanal (last_order_channel) bazında, en çok ilgi gören kategoriyi ve bu kategoriden ne kadarlık alışveriş yapıldığını getiren sorguyu yazınız.
-En çok alışveriş yapan kişinin ID’ sini getiren sorguyu yazınız.
-En çok alışveriş yapan kişinin alışveriş başına ortalama cirosunu ve alışveriş yapma gün ortalamasını (alışveriş sıklığını) getiren sorguyu yazınız.
-En çok alışveriş yapan (ciro bazında) ilk 100 kişinin alışveriş yapma gün ortalamasını (alışveriş sıklığını) getiren sorguyu yazınız.
-En son alışveriş yapılan kanal (last_order_channel) kırılımında en çok alışveriş yapan müşteriyi getiren sorguyu yazınız.
-En son alışveriş yapan kişinin ID’ sini getiren sorguyu yazınız. (Max son tarihte birden fazla alışveriş yapan ID bulunmakta. Bunları da getiriniz.)
+QUESTIONS
+
+Create a database named Customers and a table named FLO that will contain the variables in the given data set.
+Write the query that will show how many different customers shopped.
+Write the query that will return the total number of purchases and turnover.
+Write the query that will return the average turnover per purchase.
+Write the query that will bring the total turnover and number of purchases made through the last_order_channel.
+Write the query that returns the total turnover obtained in the Store type breakdown.
+Write the query that will bring the number of purchases in year breakdown (Based on the year of the customer's first purchase date (first_order_date) as a year)
+Write the query that will calculate the average turnover per purchase in the most recent channel breakdown.
+Write the query that brings up the most popular category in the last 12 months.
+Write the query that returns the most preferred store_type information.
+On the basis of last_order_channel, write the query that brings the most popular category and how much shopping was done from this category.
+Write the query that brings the ID of the person who makes the most purchases.
+Write the query that returns the average turnover per purchase and the average shopping day (shopping frequency) of the top shopper.
+Write the query that returns the average of the first 100 shopping days (shopping frequency) of the top 100 shoppers (in terms of turnover).
+Write the query that brings the most shoppers in the last_order_channel breakdown.
+Write the query that returns the ID of the last shopper. (There is more than one shopper ID on the max deadline. Bring them too.)
