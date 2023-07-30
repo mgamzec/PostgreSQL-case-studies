@@ -1,5 +1,5 @@
 /*
-MIUUL SQL FLO SORULARI
+SQL FLO CASE STUDY
 */
 
 --SORU 1 Customers isimli bir veritabanıve verilen veri setindeki değişkenleri içerecekFLO isimli bir tablo oluşturunuz.
