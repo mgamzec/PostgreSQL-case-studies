@@ -1,4 +1,4 @@
-# PostgreSQL-study-case-and-exercises
+# Datacamp SQL track
 
 # FLO CASE STUDY 
  
